@@ -24,6 +24,7 @@ void swap(j)
 	persons[j + 1] = buffer;
 }
 
+// Сортирует по имении
 void by_first()
 {
 	int i, j;
@@ -33,6 +34,7 @@ void by_first()
 				swap(j);
 }
 
+// Сортирует по фамилии
 void by_last()
 {
 	int i, j;
@@ -42,6 +44,7 @@ void by_last()
 				swap(j);
 }
 
+// Сортирует по году рождения
 void by_year()
 {
 	int i, j;
@@ -51,6 +54,7 @@ void by_year()
 				swap(j);
 }
 
+// Сортирует по полу
 void by_sex()
 {
 	int i, j;
@@ -60,6 +64,7 @@ void by_sex()
 				swap(j);
 }
 
+// Сортирует по росту
 void by_height()
 {
 	int i, j;
@@ -77,7 +82,7 @@ int main(int argc, char **argv)
 	
 	FILE *in, *out;
 	
-	char query[6];
+	char query[6]; // Строка с настройками сортировки
 	
 	int i;
 	
@@ -106,7 +111,9 @@ int main(int argc, char **argv)
 		fclose(in);
 		in = fopen(argv[argc], "r");		
 		
+		// Выделяем память под динамический массив структур типа PERSON
 		persons = (PERSON**)malloc(lines * sizeof(PERSON*));
+		
 		for(i = 0; i < lines; i++)
 		{
 			persons[i] = (PERSON*)malloc(sizeof(PERSON));
@@ -126,9 +133,14 @@ int main(int argc, char **argv)
 		
 		// Выбор критериев сортировки
 		printf("Укажите критерии сортировки без пробелов\n<и> по имени\n<ф> по фамилии\n<г> по году рождения\n<п> по полу\n<р> по росту:\n > ");
+		
+		// Записываем в строчку настройки сортировки
 		scanf("%s", query);
+		
+		// Читаем по одному символу из настроек
 		for(i = 0; i < strlen(query); i++)
 		{
+			// и вызываем соответствующую функцию
 			switch(query[i])
 			{
 				case 'и': printf("Сортировка по имени\n"); by_first(); break;
