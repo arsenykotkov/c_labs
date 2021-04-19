@@ -3,6 +3,23 @@
  * арифметических действий (+, -), унарный и бинарный варианты.
  */
 
+/* Упрощённая версия
+#include <stdio.h>
+
+int main()
+{
+	int n, res = 0;
+	char o;
+	while(fscanf(stdin, "%i %c", &n, &o))
+	{
+		res += n;
+		if(o == ';') break;
+	}
+	printf("%i", res);
+	return 0;
+}
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
